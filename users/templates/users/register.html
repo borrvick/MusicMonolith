@@ -1,0 +1,25 @@
+{%extends "spotify/base.html"%} {%load crispy_forms_tags%} {%block content%}
+<div class="content-section m-5">
+  <div class="media">
+    <div class="media-body">
+      <h2 class="border-bottom account-heading">Create an Account</h2>
+      <br />
+      <!--break-->
+    </div>
+  </div>
+  <form method="POST">
+    <!-- this is required for extra security -->
+    {%csrf_token%}
+    <fieldset class="form-group">{{u_form|crispy}}</fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Sign Up</button>
+    </div>
+  </form>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Already Have An Account?
+      <a class="ml-2" href="{%url 'login'%}">Sign In</a>
+    </small>
+  </div>
+</div>
+{%endblock content%}

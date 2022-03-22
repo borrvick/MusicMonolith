@@ -1,0 +1,28 @@
+{%extends "spotify/base.html"%}
+{%load crispy_forms_tags%}
+{%block content%}
+
+<div class="content-section m-5">
+  <div class="media">
+    <div class="media-body">
+      <h2 class="border-bottom account-heading">Update Account</h2><br>
+      <!--break-->
+    </div>
+  </div>
+  <form method="POST" enctype="" multipart/form-data>
+    <!-- this is required for extra security -->
+    {%csrf_token%}
+    <fieldset class="form-group">
+      <!-- renders form as paragraph tags -->
+      {{u_form|crispy}}
+      {{p_form|crispy}}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-primary" type="submit">Confirm Update</button>
+    </div>
+  </form>
+  <div class="border-top pt-3">
+    <a href="{%url 'profile'%}"><button class="btn btn-outline-secondary">Return</button></a>
+  </div>
+</div>
+{%endblock content%}

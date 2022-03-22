@@ -1,0 +1,21 @@
+{%extends "spotify/base.html"%}
+{% load static%}
+{%block content%}
+<div class="container mt-5">
+  <div class="display-1 display-custom-yellow">Search, Play, Pitch.</div>
+  <h5 class="white-text">Marketing Music Just Got a Whole Lot Easier</h5>
+  <div class="mt-5 mb-5">
+    <form method="GET" action="{%url 'results'%}" class="inline-div">
+      <button onclick="Loader()" href="{%url 'results'%}" type="submit" value="Get Playlists"
+        class="btn search-button ml-2 inline-text search-input-btn">
+        Get Playlists
+      </button>
+      <div class="search-text-div">
+        <input type="search" class="form-control rounded inline-text search-text-width"
+          placeholder="Examples: 'Happy', 'Rap', 'music that makes me dance'..." aria-label="Search"
+          aria-describedby="search-addon" name="q" required pattern=".*\S+.*" maxlength="50" id="search-bar" />
+      </div>
+    </form>
+  </div>
+</div>
+{%endblock content%}

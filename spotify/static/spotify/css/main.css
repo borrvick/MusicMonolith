@@ -1,0 +1,287 @@
+/*
+ Theme Name: Monolith Theme #1
+ Description: Music Monolith Marketing Website 
+ Author: Benjamin Orrvick
+ Author URL:  https://github.com/borrvick/
+ Purpose: Style UI where I feel boostrap falls short
+ Tags: Music, Marketing, Business, Website, Application
+*/
+
+/* this beautiful piece of code helps visually see what may or may not be causing me an issue */
+/* * {
+    background: #000 !important;
+    color: #0f0 !important;
+    outline: solid #f00 1px !important;
+  }  */
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.logo-space{
+  margin-right: 25px;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  width: 100%;
+  height: 100%;
+  /* min-width: 400px; */
+  border-radius: 10px 10px 0 0;
+  /* makes sure border radius displays properly */
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff4b;
+}
+
+.content-table thead tr {
+  background-color: #2E294E;
+  color: rgb(237, 240, 96);
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #9590b8;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #7700ff;
+}
+
+.content-table tbody tr {
+  font-weight: bold;
+  color: #7700ff;
+}
+
+.content-table tbody tr:hover {
+  font-weight: bold;
+  background-color: #7700ff;
+  color: #edf060;
+}
+
+.content-table tbody tr:hover td a button {
+  font-weight: bold;
+  color: #edf060;
+  border: 2px solid #edf060;
+  background-color: transparent;
+}
+
+html,
+body {
+  font-family: 'Epilogue', sans-serif;
+  background: #edf060;
+}
+
+.container-custom {
+  /* position: absolute; */
+  /* height of nav bar */
+  margin-top: 56px;
+  min-height: 100vh;
+}
+
+.col-custom{
+  background-color: rgb(237, 240, 96, .2) ;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.inline-div {
+  display: inline;
+}
+
+.inline-text {
+  display: inline-block;
+  text-align: left;
+}
+
+.display-custom {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: bold;
+  color: #2E294E;
+  text-shadow: 4px 2px 7px #b2b449;
+}
+
+.centered{
+  margin-top: 20%;
+}
+
+.display-custom-yellow{
+  font-family: 'Epilogue', sans-serif;
+  font-weight: bold;
+  color: #edf060;
+  text-shadow: 4px 2px 7px #2E294E;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  color: #2E294E;
+}
+
+.purple-text {
+  color: #7700ff;
+}
+
+.purple-text-dark {
+  color: #2E294E;
+}
+
+.purple-text-mid {
+  color: #9590b8;
+}
+
+.white-text{
+  color:#ffffff;
+}
+
+.yellow-text{
+  color:#edf060;
+}
+
+.search-button {
+  background-color: #7700ff;
+  color: #edf060;
+}
+
+.search-input-btn {
+  float: right;
+}
+
+.search-text-div {
+  overflow: hidden;
+  padding-right: .5em;
+}
+
+.search-text-width {
+  width: 100%;
+}
+
+.result-button {
+  border: 2px solid #7700ff;
+  background-color: transparent;
+  color: #7700ff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.result-button:hover {
+  border: 2px solid #edf060;
+  background-color: #edf060 !important;
+  color: #7700ff !important;
+}
+
+.result-button-light {
+  border: 2px solid #7700ff;
+  color: #7700ff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.result-button-light:hover {
+  border: 2px solid #9590b8;
+  background-color: #9590b8 !important;
+  color: #edf060 !important;
+}
+
+
+ul {
+  margin: 0;
+}
+
+.bg-purple {
+  background-color: #7700ff;
+}
+
+.bg-purple-dark {
+  background-color: #2E294E;
+}
+
+.site-header .navbar-nav .nav-link {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #EDF060;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+a {
+  color: inherit;
+}
+
+.navbar {
+  box-shadow: 0px 1px 3px #444444;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  margin-bottom: 0px;
+  box-shadow: 1px 1px 10px #2E294E;
+}
+
+footer{
+  bottom: 0;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.hide{
+margin-top: 10em;
+width: 100vw;
+height: 100vh;
+display: none;
+justify-content: center;
+align-items: center;
+}
+
+#video-background{
+  object-fit: cover;
+  top: 0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 766.98px) { 
+  .display-1, .display-2, .display-3{
+    font-size: 2em;
+  }
+
+  p{
+    font-size: .75em;
+  }
+
+  h4{
+    font-size: .5em;
+  }
+}
+
+/* removes the space between toggle bar and logo */
+@media screen and (max-width: 400px) {
+  .logo-space{
+    margin-right: 0px;
+  }
+}

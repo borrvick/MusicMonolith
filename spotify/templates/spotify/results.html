@@ -1,0 +1,94 @@
+{%extends "spotify/base.html"%} {%block content%}
+<div class="inline-div">
+  <h1 class="display-1 display-custom inline-text mt-5">Boom!</h1>
+  <h3 class="purple-text inline-text">...Playlists.</h3>
+</div>
+<div>
+  {%if PlaylistList.number != null %}
+  <h4 class="border-top pt-2">
+    Total Playlists {{PlaylistList.paginator.count}}:
+  </h4>
+  <p>Page {{PlaylistList.number}} of {{PlaylistList.paginator.num_pages}}</p>
+  {%else%}
+  <h4 class="border-top pt-2">Total Playlists 0:</h4>
+  <p>Page 0 of 0</p>
+  {%endif%}
+</div>
+<div class="scroll">
+  <table class="content-table">
+    {%if PlaylistList %}
+    <thead>
+      <td>Playlist</td>
+      <td>Profile</td>
+      <td>Instagram</td>
+      <td>Email</td>
+    </thead>
+    <tbody>
+      {% for playlist in PlaylistList %}
+      <tr class="active-row">
+        <td>
+          <a href="{{playlist.playlistUrl}}">{{playlist.playlistName}}</a>
+        </td>
+        <td><a href="{{playlist.profileUrl}}">{{playlist.profile}}</a></td>
+        {%if playlist.insta != "None"%}
+        <td>
+          <a href="{{playlist.insta}}"><button class="btn result-button">DM</button></a>
+        </td>
+        {%else%}
+        <td>{{playlist.insta}}</td>
+        {%endif%}
+        {%if playlist.email != "None"%}
+        <td>
+          <a href="mailto:{{playlist.email}}"><button class="btn result-button">Email</button></a>
+        </td>
+        {%else%}
+        <td>{{playlist.email}}</td>
+        {%endif%}
+      </tr>
+      {%endfor%}
+    </tbody>
+    {%else%}
+    <div>
+      <p>No Results Found. Try something else.</p>
+    </div>
+    {%endif%}
+  </table>
+</div>
+{% if PlaylistList.has_previous %}
+<a class="btn result-button-light mb-4" href="?page=1&q={{searchquery}}">First</a>
+<a class="btn result-button-light mb-4"
+  href="?page={{ PlaylistList.previous_page_number }}&q={{searchquery}}">Previous</a>
+{% endif %} {% for page in PlaylistList.paginator.page_range %}
+{% if PlaylistList.number == page %}
+<a class="btn search-button mb-4" href="?page={{ page }}&q={{searchquery}}">{{ page}}</a>
+{% elif page > PlaylistList.number|add:'-3' and page < PlaylistList.number|add:'3' %} <a
+  class="btn result-button-light mb-4" href="?page={{ page }}&q={{searchquery}}">{{ page }}</a>
+  {% endif %}
+  {% endfor %}
+  {% if PlaylistList.has_next %}
+  <a class="btn result-button-light mb-4" href="?page={{ PlaylistList.next_page_number }}&q={{searchquery}}">Next</a>
+  <a class="btn result-button-light mb-4" href="?page={{ PlaylistList.paginator.num_pages }}&q={{searchquery}}">Last</a>
+  {% endif %}
+
+  <div class="media mt-3">
+    <div class="media-body">
+      <h2 class="account-heading mt-5">Want More?</h2>
+      <h6 class="purple-text">Search Again.</h6>
+      <br />
+      <!--break-->
+    </div>
+  </div>
+  <div class="mt-5 mb-5">
+    <form method="GET" action="{%url 'results'%}" class="inline-div">
+      <button onclick="Loader()" href="{%url 'results'%}" type="submit" value="Get Playlists"
+        class="btn search-button ml-2 inline-text search-input-btn">
+        Get Playlists
+      </button>
+      <div class="search-text-div">
+        <input type="search" class="form-control rounded inline-text search-text-width"
+          placeholder="Examples: 'Happy', 'Rap', 'music that makes me dance'..." aria-label="Search"
+          aria-describedby="search-addon" name="q" required pattern=".*\S+.*" maxlength="50" id="search-bar" />
+      </div>
+    </form>
+  </div>
+  {%endblock content%}

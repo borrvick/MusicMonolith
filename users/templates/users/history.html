@@ -1,0 +1,42 @@
+{%extends "spotify/base.html"%}
+{%block content%}
+<div class="content-section m-5">
+    <div class="media">
+        <div class="media-body">
+            <h2 class="border-bottom account-heading">Recent Searches</h2><br>
+            <!--break-->
+        </div>
+    </div>
+    <div class="scroll">
+        <table class="content-table">
+            {% if csvs %}
+            <thead>
+                <td>Account</td>
+                <td>Search</td>
+                <td>Date Searched</td>
+                <td>Download</td>
+            </thead>
+            <tbody>
+                {% for csv in csvs %}
+                <tr class="active-row">
+                    <td>{{csv.name}}</td>
+                    <td>{{csv.profile}}</td>
+                    <td>{{csv.created_at}}</td>
+                    <td><a href="{{csv.csv.url}}" target="_blank"><button
+                                class=" btn result-button">Download</button></a>
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+            {%else%}
+            <div>
+                <p>No Recent Searches Found. Try searching using Find Playlists.</p>
+            </div>
+            {%endif%}
+        </table>
+    </div>
+    <div class="border-top pt-3">
+        <a href="{%url 'profile'%}"><button class="btn btn-outline-secondary">Return</button></a>
+    </div>
+</div>
+{%endblock content%}

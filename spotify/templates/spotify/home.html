@@ -1,0 +1,45 @@
+{%extends "spotify/base.html"%}
+{% load static%}
+{%block home%}
+<div class="container-fluid">
+    <div class="row centered">
+        <div class="col display-2 display-custom-yellow text-center">MusicMonolith</div>
+    </div>
+    <div class="row">
+        <h5 class=" col white-text text-center">Less time marketing, more time making music.</h5>
+    </div>
+    <div class="d-flex justify-content-center position-relative mt-5 mb-5"><a href="{%url 'spotify_search'%}"><button
+                class="btn search-button text-center">Get
+                Started</button></a>
+    </div>
+    <div class="row justify-content-center centered mb-5">
+        <div class="col-md-3 col-custom">
+            <h5 class="white-text border-bottom border-secondary">406 Million Listeners</h5>
+            <p class="yellow-text">Spotify reports to have more than 406 million active users, that's 35% of the
+                entire
+                music streaming market. With over 82 million songs to choose from, users have created more than 4
+                billion
+                playlists. Music distributor AWAL claims their artists typically see a 50-100 percent boost when
+                featured on Spotify-sponsored playlists.</p>
+        </div>
+        <div class="col-md-3 col-custom">
+            <h5 class="white-text border-bottom border-secondary">$1 Million Budget</h5>
+            <p class="yellow-text">National Public Radio (commonly refered to as NPR) suggests that record labels
+                spend more than $1,000,000 when marketing a hit song.
+                It's not uncommon for portions of marketing budgets to be allocated specifically to playlisting. The
+                ideology that great music alone is enough to break through the 60,000 songs released every
+                day, is long dated.
+            </p>
+        </div>
+        <div class="col-md-3 col-custom">
+            <h5 class="white-text border-bottom border-secondary">Independent Artists</h5>
+            <p class="yellow-text">An online study shows that even though 87% of the 489 independent musicians surveyed
+                believe marketing their music is vitally important to success, only 32% spend their time evenly between
+                marketing
+                and music creation. If you're one of the 68% who would rather spend their time creating music, then you
+                came to the right place.</p>
+        </div>
+    </div>
+
+</div>
+{%endblock home%}

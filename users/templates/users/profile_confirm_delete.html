@@ -1,0 +1,19 @@
+{%extends "spotify/base.html"%}
+{%block content%}
+<div class="content-section m-5">
+  <div class="media">
+    <div class="media-body">
+      <h2 class="border-bottom account-heading">Confirm Delete?</h2><br>
+      <!--break-->
+    </div>
+  </div>
+  <p class="account-detail">Are you sure you want to delete your account? This action is not reversible!</p>
+  <div class="form-group">
+    <a href="{%url 'profile_confirm_delete' pk=user.pk%}" <button class="btn btn-outline-danger">Yes, Delete My Account
+      Forever</button></a>
+  </div>
+  <div class="border-top pt-3">
+    <a href="{%url 'profile'%}"><button class="btn btn-outline-secondary">Cancel</button></a>
+  </div>
+</div>
+{%endblock content%}

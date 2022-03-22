@@ -1,0 +1,21 @@
+{%extends "spotify/base.html"%} {%load crispy_forms_tags%} {%block content%}
+
+<div class="content-section m-5">
+  <div class="media">
+    <div class="media-body">
+      <h2 class="border-bottom account-heading">Account</h2>
+      <br />
+      <!--break-->
+      <p class="account-detail">First Name: {{user.profile.firstName}}</p>
+      <p class="account-detail">Last Name: {{user.profile.lastName}}</p>
+      <p class="account-detail">Username: {{user.username}}</p>
+      <p class="account-detail">Email: {{user.email}}</p>
+    </div>
+  </div>
+  <div class="border-top pt-3">
+    <a href="{%url 'profile_update'%}"><button class="btn btn-outline-info">Update Account</button></a>
+    <a href="{%url 'history'%}"><button class="btn btn-outline-secondary">Recent Searches</button></a>
+    <a href="{%url 'profile_delete'%}"><button class="btn btn-outline-danger">Delete Account</button></a>
+  </div>
+</div>
+{%endblock content%}

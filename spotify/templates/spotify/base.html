@@ -1,0 +1,147 @@
+<!-- loads in the satic files which in this case would be the css -->
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#7700ff" />
+  <meta name="description" content="MusicMonolith" />
+
+  <link rel="apple-touch-icon" href="{%static 'spotify/images/mm_apple_icon.png'%}" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="{%static 'spotify/css/main.css'%}" />
+
+  <link rel="shortcut icon" type="image/jpg" href="{%static 'spotify/images/favicon.png'%}" />
+
+  {% if title %}
+  <title>MusicMonolith - {{title}}</title>
+  {%else%}
+  <title>MusicMonolith</title>
+  {%endif%}
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-purple fixed-top">
+      <div class="container">
+        <!-- Navbar Left Side -->
+        <a href="{%url 'spotify_home'%}" class="logo-space"><img
+            src="{%static 'spotify/images/MusicMonolith_Logo.svg'%}" alt="site_logo" width="212" height="22" /></a>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{%url 'spotify_search'%}">Find Playlists</a>
+            <a class="nav-item nav-link" href="{%url 'how'%}">How to Use</a>
+            <a class="nav-item nav-link" href="{%url 'faq'%}">FAQ's</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            {%if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{%url 'profile'%}">Account</a>
+            <a class="nav-item nav-link" href="{%url 'logout'%}">Logout</a>
+            {%else%}
+            <a class="nav-item nav-link" href="{%url 'login'%}">Login</a>
+            <a class="nav-item nav-link" href="{%url 'register'%}">Register</a>
+            {%endif%}
+          </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  {% if title == "Search" or title == "Home" %}
+  <div class="bg-purple-dark" id="video-background">
+    <video autoplay muted loop playsinline poster="{%static 'spotify/images/MusicMonolith_Home.jpg'%}">
+      <source src="{%static 'spotify/images/MusicMonolith_Home.mp4'%}" type="video/mp4">
+    </video>
+  </div>
+  {%endif%}
+  <div class="hide" id="loader-div">
+    <a class="mr-4"><img src="{%static 'spotify/images/loader.gif'%}" /></a>
+  </div>
+  <div class="container container-custom" id="base-div">
+    <div class="row">
+      <div class="col-md-8">
+        {%if messages%} {%for message in messages%}
+        <div class="alert alert-{{message.tags}}">{{message}}</div>
+        {%endfor%}
+        {%endif%}
+        {% block content %}
+        {% endblock content%}
+      </div>
+    </div>
+    {% block home %}
+    {% endblock home%}
+  </div>
+  <footer class="text-center text-lg-start text-white bg-purple-dark">
+    <!-- Grid container -->
+    <div class="container">
+      <!--Grid row-->
+      <div class="row">
+        <div class="d-flex align-items-center justify-content-center mx-auto mt-3 mb-4">
+          <a href="{%url 'spotify_home'%}"><img class="img-fluid"
+              src="{%static 'spotify/images/MusicMonolith_Logo_White.svg'%}" alt="site_logo" width="212"
+              height="22" /></a>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-light">
+            Useful links
+          </h5>
+          <p>
+            <a href="{%url 'spotify_search'%}" class="purple-text-mid">Find Playlists</a>
+          </p>
+          <p>
+            <a href="{%url 'how'%}" class="purple-text-mid">How to Use</a>
+          </p>
+          <p>
+            <a href="{%url 'faq'%}" class="purple-text-mid">FAQ's</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h5 class="text-uppercase mb-4 font-weight-bold text-light">
+            Contact
+          </h5>
+          <p>
+            <a class="purple-text-mid" href="mailto:contact@musicmonolith.com">contact@musicmonolith.com</a>
+          </p>
+          <p class="purple-text-mid">Pittsburgh, PA</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <hr />
+      <div class="purple-text-mid">
+        Copyright © MusicMonolith 2022. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- hides the page and displays the loading gif -->
+  <script src="{%static 'spotify/js/loader.js'%}"></script>
+</body>
+
+</html>
